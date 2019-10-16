@@ -67,5 +67,42 @@ class StudentTest {
 		Integer actual = s.getRating();
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	void testCompareTo() throws NameException {
+		Student firstStudent = new Student("A", "B", 2);
+		Student secondStudent = new Student("A", "C", 3);
+		Student student = new Student("A", "A", 5);
+		Student empty = new Student("Z", "", 3);
+		Student secondEmpty = new Student ("x", "", 3);
+		
+		boolean result = false;
+		
+		CompareLastFirstName clfn = new CompareLastFirstName();
+		
+		clfn.compare(firstStudent, secondStudent);
+		
+		int actual = secondStudent.compareTo(firstStudent);
+		
+		if (actual > 0) 
+			result = true;
+		assertTrue(result);
+		
+		//should be smaller than zero
+		Student student = new Student("X", "Y", 5);
+		result = false;
+		actual = secondStudent.compareTo(student);
+		if (actual < 0)
+			result = true;
+		assertTrue(result);
+		
+		//should be the same
+		Student studentSame = new Student("x", "y", 5);
+		result = false;
+		actual = secondStudent.compareTo(studentSame);
+		int expected = 0;
+		assertEquals(expected, actual);
+		
+	}
 
 }

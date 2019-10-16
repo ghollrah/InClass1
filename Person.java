@@ -23,5 +23,9 @@ public class Person extends NameHolder {
 				+ "Last Name: " + lastName + "***";
 		return description;
 	}
+	
+	public String getLastName() {
+		return lastName;
+	}
 
 }
