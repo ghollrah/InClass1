@@ -17,15 +17,26 @@ class StudentTest {
 		Student firstStudent = new Student("x", "y", 2);
 		Student secondStudent = new Student("X", "Y", 3);
 		
-		
+		// should be bigger than zero
 		int actual = secondStudent.compareTo(firstStudent);
-		int expected = 1;
+		boolean result = false;
+		if (actual > 0) 
+			result = true;
+		assertTrue(result);
 		
-		assertEquals(expected, actual);
+		//should be smaller than zero
 		Student student = new Student("X", "Y", 5);
-		
-		expected = -1;
+		result = false;
 		actual = secondStudent.compareTo(student);
+		if (actual < 0)
+			result = true;
+		assertTrue(result);
+		
+		//should be the same
+		Student studentSame = new Student("x", "y", 5);
+		result = false;
+		actual = secondStudent.compareTo(studentSame);
+		int expected = 0;
 		assertEquals(expected, actual);
 		
 	}
